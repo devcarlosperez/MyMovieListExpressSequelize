@@ -1,0 +1,17 @@
+module.exports = app => {
+  const movies = require("../controllers/movie.controller.js")
+
+  const router = require("express").Router()
+
+  router.post("/", movies.create)
+
+  router.get("/", movies.findAll)
+
+  router.get("/:id", movies.findOne)
+
+  router.update("/:id", movies.update)
+
+  router.delete("/:id", movies.delete)
+
+  app.use('/api/movies', router)
+}
