@@ -9,7 +9,7 @@ module.exports = app => {
 
   router.get("/:id", movies.findOne)
 
-  router.update("/:id", movies.update)
+  router.put("/:id", movies.update)
 
   router.delete("/:id", movies.delete)
 
