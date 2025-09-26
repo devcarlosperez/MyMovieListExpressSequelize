@@ -1,6 +1,6 @@
 const db = require("../models")
-const Movie = db.movies
-const Op = db.Sequelize.Op
+const movieObject = db.movies
+const op = db.Sequelize.Op
 
 exports.create = (req, res) => {
   const movie = {
@@ -8,7 +8,7 @@ exports.create = (req, res) => {
     rating: req.body.rating
   }
 
-  Movie.create(movie).then(data => {
+  movieObject.create(movie).then(data => {
     res.send(data)
   }).catch(err => {
     res.status(500).send({
@@ -18,7 +18,7 @@ exports.create = (req, res) => {
 }
 
 exports.findAll = (req, res) => {
-  Movie.findAll().then(data => {
+  movieObject.findAll().then(data => {
     res.send(data)
   }).catch(err => {
     res.status(500).send({
@@ -30,7 +30,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const movieId = req.params.id
 
-  Movie.findOne({ where: {id: movieId} })
+  movieObject.findOne({ where: {id: movieId} })
     .then(data => {
       res.send(data)
     }).catch(err => {
@@ -47,7 +47,7 @@ exports.update = (req, res) => {
     rating: req.body.rating
   }
 
-  Movie.update(movie, {where: {id: movieId} })
+  movieObject.update(movie, {where: {id: movieId} })
     .then(data => {
       res.send(data)
     }).catch(err => {
@@ -60,7 +60,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const movieId = req.params.id
 
-  Movie.destroy({ where: {id: movieId} })
+  movieObject.destroy({ where: {id: movieId} })
     .then(data => {
       res.send({
         message: "Movie has been deleted."

@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const Movie = sequelize.define("movie", {
+  const movie = sequelize.define("movie", {
     name: {
       type: Sequelize.STRING,
       allowNull: false, // evita meter un campo vacío
@@ -52,5 +52,5 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
     }
   })
-  return Movie
+  return movie
 }
