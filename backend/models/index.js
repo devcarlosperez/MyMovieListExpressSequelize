@@ -20,5 +20,9 @@ db.Sequelize = Sequelize
 db.sequelize = sequelize
 
 db.movies = require("./movie.model.js")(sequelize, Sequelize)
+db.users = require("./user.model.js")(sequelize, Sequelize)
+
+db.users.hasMany(db.movies, { as: "movies" })
+db.movies.belongsTo(db.users, { foreignKey: "userId", as: "user" })
 
 module.exports = db
