@@ -6,6 +6,7 @@ const op = db.Sequelize.Op
 exports.create = async (req, res) => {
   const userTitle = req.body.name
   const userRating = req.body.rating
+  const userId = req.body.userId
 
   // Petición a OMDB para obtener los datos de la película
   const response = await axios.get("http://www.omdbapi.com/", {
@@ -35,6 +36,7 @@ exports.create = async (req, res) => {
     language: omdbData.Language,
     country: omdbData.Country,
     plot: omdbData.Plot,
+    userId: userId
   }
 
   movieObject
@@ -50,8 +52,11 @@ exports.create = async (req, res) => {
 }
 
 exports.findAll = (req, res) => {
+  const userId = req.query.userId
+  const conditionUser = userId ? { userId: userId} : null
+
   movieObject
-    .findAll()
+    .findAll({ where: conditionUser})
     .then((data) => {
       res.send(data);
     })
@@ -64,11 +69,12 @@ exports.findAll = (req, res) => {
 
 exports.findOne = (req, res) => {
   const movieId = req.params.id
+  const userId = req.query.userId
 
   movieObject
-    .findOne({ where: { id: movieId } })
+    .findOne({ where: { id: movieId, userId: userId } })
     .then((data) => {
-      res.send(data);
+      res.send(data)
     })
     .catch((err) => {
       res.status(500).send({
@@ -80,6 +86,7 @@ exports.findOne = (req, res) => {
 
 exports.update = async (req, res) => {
   const movieId = req.params.id
+  const userId = req.body.userId
   const userTitle = req.body.name
   const userRating = req.body.rating
 
@@ -112,9 +119,9 @@ exports.update = async (req, res) => {
   }
 
   movieObject
-    .update(movie, { where: { id: movieId } })
+    .update(movie, { where: { id: movieId, userId: userId } })
     .then((data) => {
-      res.send(data);
+      res.send(data)
     })
     .catch((err) => {
       res.status(500).send({
@@ -124,10 +131,11 @@ exports.update = async (req, res) => {
 }
 
 exports.delete = (req, res) => {
-  const movieId = req.params.id;
+  const movieId = req.params.id
+  const userId = req.body.userId
 
   movieObject
-    .destroy({ where: { id: movieId } })
+    .destroy({ where: { id: movieId, userId: userId } })
     .then((data) => {
       res.send({
         message: "Movie has been deleted.",

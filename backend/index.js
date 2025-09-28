@@ -19,6 +19,7 @@ app.get("/", (req, res) => {
 })
 
 require("./routes/movie.routes.js")(app)
+require("./routes/user.routes.js")(app)
 
 const port = process.env.PORT || 8080
 
