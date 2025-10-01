@@ -1,2 +1,25 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+:root {
+  /* Brand Colors */
+  --color-primary: #d0021b;
+  --color-secondary: #19191a;
+
+  /* Accent Scale */
+  --color-secondary-01: #ff6f7d;
+  --color-secondary-02: #ffb347;
+  --color-secondary-03: #ffe156;
+  --color-secondary-04: #6fcf97;
+  --color-secondary-05: #5396fc;
+
+  /* State Colors */
+  --color-info: #5396fc;
+  --color-success: #27ae60;
+  --color-warning: #ffe156;
+  --color-error: #f44336;
+
+  /* Neutrals */
+  --color-neutral-01: #ffffff;
+  --color-neutral-02: #f5f5f5;
+  --color-neutral-03: #cccccc;
+  --color-neutral-04: #757575;
+  --color-neutral-05: #19191a;
+}
