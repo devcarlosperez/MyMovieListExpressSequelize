@@ -59,7 +59,7 @@ You can test the endpoints using the following Postman collection:
 
 ## Suggestions 💡
 
-> **Note:** You need your own OMDb API key. Get it for free at [OMDb API](https://www.omdbapi.com/apikey.aspx) and set it in the backend configuration.
+- You need your own OMDb API key. Get it for free at [OMDb API](https://www.omdbapi.com/apikey.aspx) and set it in the backend configuration.
 
 ## Acknowledgments 🎁
 
