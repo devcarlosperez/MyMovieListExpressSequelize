@@ -42,6 +42,7 @@ Clone the repository and follow these steps to run the backend and frontend loca
 
 - [OMDb API](https://www.omdbapi.com/)
 - [Postman](https://www.postman.com/)
+- [Ionic Components](https://ionicframework.com/docs/components)
 
 ## Postman 🧪
 
