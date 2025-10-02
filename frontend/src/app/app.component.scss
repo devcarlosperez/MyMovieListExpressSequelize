@@ -5,3 +5,24 @@ ion-toolbar {
 ion-buttons {
   gap: 5px;
 }
+
+ion-modal {
+  --background: var(--color-neutral-01);
+  
+  ion-content {
+    --background: var(--color-neutral-01);
+  }
+
+  ion-item {
+    --background: var(--color-neutral-01);
+    
+    ion-label {
+      --color: var(--color-neutral-05);
+    }
+
+    ion-input {
+      --color: var(--color-neutral-05);
+      --placeholder-color: var(--color-neutral-04);
+    }
+  }
+}

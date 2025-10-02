@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,10 @@ import { Router } from '@angular/router';
   standalone: false,
 })
 export class AppComponent {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private modalController: ModalController
+  ) {}
 
   getHomePage() {
     this.router.navigate(['/home']);
@@ -16,5 +20,12 @@ export class AppComponent {
 
   getMyListPage() {
     this.router.navigate(['/my-movie-list']);
+  }
+
+  async dismissModal() {
+    const modal = await this.modalController.getTop();
+    if (modal) {
+      modal.dismiss();
+    }
   }
 }
