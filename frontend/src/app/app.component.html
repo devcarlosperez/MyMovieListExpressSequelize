@@ -5,8 +5,9 @@
       <ion-buttons slot="end">
         <ion-button (click)="getHomePage()">Home</ion-button>
         <ion-button (click)="getMyListPage()">My List</ion-button>
-        <ion-button id="open-login-modal">Login</ion-button>
-        <ion-button id="open-register-modal">Register</ion-button>
+        <ion-button *ngIf="!isLoggedIn" id="open-login-modal">Login</ion-button>
+        <ion-button *ngIf="!isLoggedIn" id="open-register-modal">Register</ion-button>
+        <ion-button *ngIf="isLoggedIn" (click)="logout()">Logout</ion-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>

@@ -33,12 +33,18 @@ export class AppComponent {
     this.userService.getUser(user).subscribe({
       next: (response: any) => {
         console.log('Login successful', response);
+        this.isLoggedIn = true;
         this.dismissModal();
       },
       error: (error) => {
         console.error('Login failed', error);
       }
     });
+  }
+
+  logout() {
+    this.isLoggedIn = false;
+    this.router.navigate(['/home']);
   }
 
   register() {
