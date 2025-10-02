@@ -5,10 +5,60 @@
       <ion-buttons slot="end">
         <ion-button (click)="getHomePage()">Home</ion-button>
         <ion-button (click)="getMyListPage()">My List</ion-button>
-        <ion-button>Login</ion-button>
-        <ion-button>Register</ion-button>
+        <ion-button id="open-login-modal">Login</ion-button>
+        <ion-button id="open-register-modal">Register</ion-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
+
+  <ion-modal trigger="open-login-modal">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input type="email" placeholder="Enter your email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input
+            type="password"
+            placeholder="Enter your password"
+          ></ion-input>
+        </ion-item>
+
+        <ion-button expand="block">Login</ion-button>
+        <ion-button expand="block" color="medium">Cancel</ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal trigger="open-register-modal">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-label position="stacked">Name</ion-label>
+          <ion-input type="text" placeholder="Enter your name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input type="email" placeholder="Enter your email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input
+            type="password"
+            placeholder="Enter your password"
+          ></ion-input>
+        </ion-item>
+
+        <ion-button expand="block">Register</ion-button>
+        <ion-button expand="block" color="medium">Cancel</ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
   <ion-router-outlet></ion-router-outlet>
 </ion-app>
