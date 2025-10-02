@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,14 +7,5 @@ import { Router } from '@angular/router';
   standalone: false,
 })
 export class HomePage {
-
-  constructor(private router: Router) {}
-
-  getHomePage() {
-    this.router.navigate(['/home']);
-  }
-
-  getMyListPage() {
-    this.router.navigate(['/list']);
-  }
+  
 }

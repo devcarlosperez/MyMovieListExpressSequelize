@@ -1,3 +1,14 @@
 <ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title slot="start">MyMovieList</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="getHomePage()">Home</ion-button>
+        <ion-button (click)="getMyListPage()">My List</ion-button>
+        <ion-button>Login</ion-button>
+        <ion-button>Register</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
   <ion-router-outlet></ion-router-outlet>
 </ion-app>
