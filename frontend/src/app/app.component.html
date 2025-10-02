@@ -16,18 +16,15 @@
       <ion-content class="ion-padding">
         <ion-item>
           <ion-label position="stacked">Email</ion-label>
-          <ion-input type="email" placeholder="Enter your email"></ion-input>
+          <ion-input type="email" [(ngModel)]="loginEmail" placeholder="Enter your email"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Password</ion-label>
-          <ion-input
-            type="password"
-            placeholder="Enter your password"
-          ></ion-input>
+          <ion-input type="password" [(ngModel)]="loginPassword" placeholder="Enter your password"></ion-input>
         </ion-item>
 
-        <ion-button expand="block">Login</ion-button>
+        <ion-button expand="block" (click)="login()">Login</ion-button>
         <ion-button expand="block" color="medium" (click)="dismissModal()">Cancel</ion-button>
       </ion-content>
     </ng-template>
@@ -38,23 +35,20 @@
       <ion-content class="ion-padding">
         <ion-item>
           <ion-label position="stacked">Name</ion-label>
-          <ion-input type="text" placeholder="Enter your name"></ion-input>
+          <ion-input type="text" [(ngModel)]="registerName" placeholder="Enter your name"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Email</ion-label>
-          <ion-input type="email" placeholder="Enter your email"></ion-input>
+          <ion-input type="email" [(ngModel)]="registerEmail" placeholder="Enter your email"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Password</ion-label>
-          <ion-input
-            type="password"
-            placeholder="Enter your password"
-          ></ion-input>
+          <ion-input type="password" [(ngModel)]="registerPassword" placeholder="Enter your password"></ion-input>
         </ion-item>
 
-        <ion-button expand="block">Register</ion-button>
+        <ion-button expand="block" (click)="register()">Register</ion-button>
         <ion-button expand="block" color="medium" (click)="dismissModal()">Cancel</ion-button>
       </ion-content>
     </ng-template>

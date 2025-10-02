@@ -15,7 +15,7 @@ export class UserService {
     });
 
     const body = new URLSearchParams();
-    body.append('username', user.username);
+    body.append('userName', user.userName);
     body.append('email', user.email);
     body.append('password', user.password);
 
