@@ -9,6 +9,8 @@ module.exports = app => {
 
   router.get("/:id", users.findOne)
 
+  router.post("/login", users.login)
+
   router.put("/:id", users.update)
 
   router.delete("/:id", users.delete)

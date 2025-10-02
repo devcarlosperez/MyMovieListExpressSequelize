@@ -47,6 +47,27 @@ exports.findOne = (req, res) => {
   })
 }
 
+exports.login = (req, res) => {
+  const email = req.body.email
+  const password = req.body.password
+
+  userObject.findOne({ where: { email } })
+  .then(user => {
+    if (!user) {
+      return res.status(404).send({ message: "User Not found." });
+    }
+
+    if (user.password !== password) {
+      return res.status(401).send({ message: "Invalid Password!" });
+    }
+
+    res.send({id: user.id, userName: user.userName, email: user.email});
+  })
+  .catch(err => {
+    res.status(500).send({ message: err.message });
+  });
+}
+
 exports.update = (req, res) => {
   const userId = req.params.id
   const userName = req.body.userName
