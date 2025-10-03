@@ -46,7 +46,7 @@ export class MovieService {
     });
 
     const body = new URLSearchParams();
-    body.append('title', movie.title);
+    body.append('name', movie.name);
     body.append('rating', movie.rating);
     body.append('userId', localStorage.getItem('userId') || '');
 

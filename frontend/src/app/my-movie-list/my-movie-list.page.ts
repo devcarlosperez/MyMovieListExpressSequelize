@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MovieService } from '../services/movie-service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, IonModal } from '@ionic/angular';
 
 @Component({
   selector: 'app-my-movie-list',
@@ -15,6 +15,10 @@ export class MyMovieListPage implements OnInit {
   addMovieTitle: string = '';
   addMovieRating: number = 0;
   httpClient: any;
+  isUpdateModalOpen: boolean = false;
+  updateMovieId: number | null = null;
+  updateMovieTitle: string = '';
+  updateMovieRating: number = 0;
 
   constructor(
     private movieService: MovieService,
@@ -104,5 +108,37 @@ export class MyMovieListPage implements OnInit {
   selectSuggestion(movie: any) {
     this.addMovieTitle = movie.Title;
     this.suggestions = [];
+  }
+
+  openUpdateModal(movie: any) {
+    this.updateMovieId = movie.id;
+    this.updateMovieTitle = movie.name;
+    this.updateMovieRating = movie.rating;
+    this.isUpdateModalOpen = true;
+  }
+
+  closeUpdateModal() {
+    this.isUpdateModalOpen = false;
+    this.updateMovieId = null;
+    this.updateMovieTitle = '';
+    this.updateMovieRating = 0;
+  }
+
+  saveUpdate() {
+    if (this.updateMovieId && this.updateMovieTitle && this.updateMovieRating) {
+      const updatedMovie = {
+        name: this.updateMovieTitle,
+        rating: this.updateMovieRating,
+      };
+      this.movieService.updateMovie(this.updateMovieId, updatedMovie).subscribe({
+        next: () => {
+          this.getAllMovies();
+          this.closeUpdateModal();
+        },
+        error: (error) => {
+          console.error('Error updating movie:', error);
+        },
+      });
+    }
   }
 }
