@@ -2,6 +2,10 @@
 
 A hybrid application to manage your personal movie list. You can create, view, update, and delete your movies as a user.
 
+# Inspiration ✨
+
+https://letterboxd.com/
+
 ## Getting Started 🚀
 
 Clone the repository and follow these steps to run the backend and frontend locally. After installation, you can create users and manage your personal movie list.
@@ -46,8 +50,8 @@ Clone the repository and follow these steps to run the backend and frontend loca
 
 ## Postman 🧪
 
-You can test the endpoints using the following Postman collection:  
-[Postman Endpoints Access](https://carlosperezsantana04-7850126.postman.co/workspace/Carlos-P%C3%A9rez-Santana's-Workspac~7309c147-11a7-49c9-8e3d-c0abbca78220/collection/48689306-2ffe5dc6-0721-4ba1-86df-79f569cc826f?action=share&source=copy-link&creator=48689306)
+Please refer to the Postman documentation for detailed information about the available endpoints:  
+[Postman Endpoints Access](https://documenter.getpostman.com/view/48689306/2sB3QGtraE)
 
 ## Build With 🛠️
 
@@ -61,8 +65,12 @@ You can test the endpoints using the following Postman collection:
 ## Suggestions 💡
 
 - You need your own OMDb API key. Get it for free at [OMDb API](https://www.omdbapi.com/apikey.aspx) and set it in the backend configuration.
+- Test the API endpoints with Postman before integrating with the frontend.
+- Update dependencies regularly to keep the project secure and compatible.
 
 ## Acknowledgments 🎁
+
+I would like to thank my classmates and my teacher Tiburcio for all their support, guidance, and encouragement throughout this project. 
 
 ## Author ✒️
 

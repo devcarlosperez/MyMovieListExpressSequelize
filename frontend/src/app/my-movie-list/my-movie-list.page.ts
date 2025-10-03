@@ -54,6 +54,8 @@ export class MyMovieListPage implements OnInit {
       this.movieService.create(movie).subscribe({
         next: (response: any) => {
           console.log('Movie added successfully:', response);
+          this.addMovieTitle = '';
+          this.addMovieRating = 0;
           this.dismissModal();
           this.getAllMovies();
         },
