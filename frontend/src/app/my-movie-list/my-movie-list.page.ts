@@ -132,15 +132,17 @@ export class MyMovieListPage implements OnInit {
         name: this.updateMovieTitle,
         rating: this.updateMovieRating,
       };
-      this.movieService.updateMovie(this.updateMovieId, updatedMovie).subscribe({
-        next: () => {
-          this.getAllMovies();
-          this.closeUpdateModal();
-        },
-        error: (error) => {
-          console.error('Error updating movie:', error);
-        },
-      });
+      this.movieService
+        .updateMovie(this.updateMovieId, updatedMovie)
+        .subscribe({
+          next: () => {
+            this.getAllMovies();
+            this.closeUpdateModal();
+          },
+          error: (error) => {
+            console.error('Error updating movie:', error);
+          },
+        });
     }
   }
 }

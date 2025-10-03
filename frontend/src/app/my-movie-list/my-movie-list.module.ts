@@ -13,8 +13,8 @@ import { MyMovieListPage } from './my-movie-list.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    MyMovieListPageRoutingModule
+    MyMovieListPageRoutingModule,
   ],
-  declarations: [MyMovieListPage]
+  declarations: [MyMovieListPage],
 })
 export class MyMovieListPageModule {}

@@ -2,10 +2,10 @@ module.exports = (sequelize, Sequelize) => {
   const movie = sequelize.define("movie", {
     name: {
       type: Sequelize.STRING,
-      allowNull: false, // evita meter un campo vacío
+      allowNull: false,
       validate: {
-        notEmpty: true   // evita strings vacíos
-      }
+        notEmpty: true,
+      },
     },
     rating: {
       type: Sequelize.FLOAT,
@@ -50,7 +50,7 @@ module.exports = (sequelize, Sequelize) => {
     plot: {
       type: Sequelize.TEXT,
       allowNull: false,
-    }
-  })
-  return movie
-}
+    },
+  });
+  return movie;
+};

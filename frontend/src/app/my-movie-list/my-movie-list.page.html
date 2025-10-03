@@ -80,19 +80,31 @@
     </ng-template>
   </ion-modal>
 
-  <ion-modal #updateModal [isOpen]="isUpdateModalOpen" (didDismiss)="closeUpdateModal()">
+  <ion-modal
+    #updateModal
+    [isOpen]="isUpdateModalOpen"
+    (didDismiss)="closeUpdateModal()"
+  >
     <ng-template>
       <ion-content class="ion-padding">
         <ion-item>
           <ion-label position="stacked">Title</ion-label>
-          <ion-input [(ngModel)]="updateMovieTitle" placeholder="Enter the title"></ion-input>
+          <ion-input
+            [(ngModel)]="updateMovieTitle"
+            placeholder="Enter the title"
+          ></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Rating</ion-label>
-          <ion-input [(ngModel)]="updateMovieRating" placeholder="Enter the rating"></ion-input>
+          <ion-input
+            [(ngModel)]="updateMovieRating"
+            placeholder="Enter the rating"
+          ></ion-input>
         </ion-item>
         <ion-button expand="block" (click)="saveUpdate()">Save</ion-button>
-        <ion-button expand="block" color="medium" (click)="closeUpdateModal()">Cancel</ion-button>
+        <ion-button expand="block" color="medium" (click)="closeUpdateModal()"
+          >Cancel</ion-button
+        >
       </ion-content>
     </ng-template>
   </ion-modal>
