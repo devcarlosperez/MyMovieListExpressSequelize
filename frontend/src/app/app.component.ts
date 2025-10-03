@@ -110,6 +110,11 @@ export class AppComponent {
   async dismissModal() {
     this.loginError = '';
     this.registerError = '';
+    this.loginEmail = '';
+    this.loginPassword = '';
+    this.registerName = '';
+    this.registerEmail = '';
+    this.registerPassword = '';
     const modal = await this.modalController.getTop();
     if (modal) {
       modal.dismiss();
