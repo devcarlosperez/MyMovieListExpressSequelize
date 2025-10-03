@@ -4,7 +4,8 @@
     <ion-text color="medium">
       <h2 class="ion-text-center">Welcome to MyMovieList!</h2>
       <p class="ion-text-center">
-        To create and manage your movie list, you need to login or register if you dont have an account yet.
+        To create and manage your movie list, you need to login or register if
+        you dont have an account yet.
       </p>
     </ion-text>
   </div>
@@ -20,6 +21,16 @@
         <ion-card-header>
           <ion-card-title>{{b.name}}</ion-card-title>
           <ion-card-subtitle>Rating: {{b.rating}}</ion-card-subtitle>
+
+          <div class="card-icons">
+            <ion-button fill="clear" size="small">
+              <ion-icon name="create-outline"></ion-icon>
+            </ion-button>
+
+            <ion-button fill="clear" size="small" (click)="deleteMovie(b.id)">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </div>
         </ion-card-header>
         <ion-card-content>
           <p>{{b.plot}}</p>

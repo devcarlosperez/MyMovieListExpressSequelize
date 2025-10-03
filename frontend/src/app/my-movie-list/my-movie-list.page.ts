@@ -60,6 +60,18 @@ export class MyMovieListPage implements OnInit {
     }
   }
 
+  deleteMovie(movieId: number) {
+    this.movieService.deleteMovies(movieId).subscribe({
+      next: (response: any) => {
+        console.log('Movie deleted successfully:', response);
+        this.getAllMovies();
+      },
+      error: (error) => {
+        console.error('Error deleting movie:', error);
+      },
+    });
+  }
+
   async dismissModal() {
     const modal = await this.modalController.getTop();
     if (modal) {
