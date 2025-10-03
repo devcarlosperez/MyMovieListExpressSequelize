@@ -108,6 +108,8 @@ export class AppComponent {
   }
 
   async dismissModal() {
+    this.loginError = '';
+    this.registerError = '';
     const modal = await this.modalController.getTop();
     if (modal) {
       modal.dismiss();

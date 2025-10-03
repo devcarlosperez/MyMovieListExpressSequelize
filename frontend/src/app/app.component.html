@@ -23,7 +23,7 @@
           <ion-label position="stacked">Password</ion-label>
           <ion-input type="password" [(ngModel)]="loginPassword" placeholder="Enter your password"></ion-input>
         </ion-item>
-        <ion-text color="danger" class="error-message" *ngIf="loginError">{{ loginError }}</ion-text>
+        <ion-text class="error-message" *ngIf="loginError">{{ loginError }}</ion-text>
         <ion-button expand="block" (click)="login()">Login</ion-button>
         <ion-button expand="block" color="medium" (click)="dismissModal()">Cancel</ion-button>
       </ion-content>
@@ -45,7 +45,7 @@
           <ion-label position="stacked">Password</ion-label>
           <ion-input type="password" [(ngModel)]="registerPassword" placeholder="Enter your password"></ion-input>
         </ion-item>
-        <ion-text color="danger" class="error-message" *ngIf="registerError">{{ registerError }}</ion-text>
+        <ion-text class="error-message" *ngIf="registerError">{{ registerError }}</ion-text>
         <ion-button expand="block" (click)="register()">Register</ion-button>
         <ion-button expand="block" color="medium" (click)="dismissModal()">Cancel</ion-button>
       </ion-content>
