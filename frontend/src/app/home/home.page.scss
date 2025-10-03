@@ -1,3 +1,15 @@
 ion-content {
   --background: var(--color-neutral-01);
 }
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#title {
+  color: var(--color-neutral-05);
+}

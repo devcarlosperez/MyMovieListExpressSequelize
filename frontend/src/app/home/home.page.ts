@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
   standalone: false,
 })
-export class HomePage {}
+export class HomePage {
+  constructor(private router: Router) {}
+
+  goToMyMovieList() {
+    this.router.navigate(['/my-movie-list']);
+  }
+}
