@@ -17,14 +17,13 @@
       <ion-content class="ion-padding">
         <ion-item>
           <ion-label position="stacked">Email</ion-label>
-          <ion-input type="email" [(ngModel)]="loginEmail" placeholder="Enter your email"></ion-input>
+          <ion-input [(ngModel)]="loginEmail" placeholder="Enter your email"></ion-input>
         </ion-item>
-
         <ion-item>
           <ion-label position="stacked">Password</ion-label>
           <ion-input type="password" [(ngModel)]="loginPassword" placeholder="Enter your password"></ion-input>
         </ion-item>
-
+        <ion-text color="danger" class="error-message" *ngIf="loginError">{{ loginError }}</ion-text>
         <ion-button expand="block" (click)="login()">Login</ion-button>
         <ion-button expand="block" color="medium" (click)="dismissModal()">Cancel</ion-button>
       </ion-content>
@@ -36,19 +35,17 @@
       <ion-content class="ion-padding">
         <ion-item>
           <ion-label position="stacked">Name</ion-label>
-          <ion-input type="text" [(ngModel)]="registerName" placeholder="Enter your name"></ion-input>
+          <ion-input [(ngModel)]="registerName" placeholder="Enter your name"></ion-input>
         </ion-item>
-
         <ion-item>
           <ion-label position="stacked">Email</ion-label>
-          <ion-input type="email" [(ngModel)]="registerEmail" placeholder="Enter your email"></ion-input>
+          <ion-input [(ngModel)]="registerEmail" placeholder="Enter your email"></ion-input>
         </ion-item>
-
         <ion-item>
           <ion-label position="stacked">Password</ion-label>
           <ion-input type="password" [(ngModel)]="registerPassword" placeholder="Enter your password"></ion-input>
         </ion-item>
-
+        <ion-text color="danger" class="error-message" *ngIf="registerError">{{ registerError }}</ion-text>
         <ion-button expand="block" (click)="register()">Register</ion-button>
         <ion-button expand="block" color="medium" (click)="dismissModal()">Cancel</ion-button>
       </ion-content>

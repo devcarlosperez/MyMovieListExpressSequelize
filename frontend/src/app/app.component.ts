@@ -18,6 +18,9 @@ export class AppComponent {
   registerEmail: string = '';
   registerPassword: string = '';
 
+  loginError: string = '';
+  registerError: string = '';
+
   constructor(
     private router: Router,
     private modalController: ModalController,
@@ -38,6 +41,7 @@ export class AppComponent {
       next: (response: any) => {
         console.log('Login successful', response);
         this.isLoggedIn = true;
+        this.loginError = '';
         localStorage.setItem('userId', response.id);
         this.dismissModal();
         this.router.navigate(['/home']).then(() => {
@@ -45,6 +49,7 @@ export class AppComponent {
         });
       },
       error: (error) => {
+        this.loginError = error.error?.message || 'Login failed';
         console.error('Login failed', error);
       },
     });
@@ -59,6 +64,15 @@ export class AppComponent {
   }
 
   register() {
+    if (!this.registerName || !this.registerEmail || !this.registerPassword) {
+      this.registerError = 'All fields are required';
+      return;
+    }
+    if (!this.validateEmail(this.registerEmail)) {
+      this.registerError = 'Invalid email format';
+      return;
+    }
+
     const user = {
       userName: this.registerName,
       email: this.registerEmail,
@@ -68,15 +82,21 @@ export class AppComponent {
     this.userService.create(user).subscribe({
       next: (response: any) => {
         console.log('Registration successful', response);
+        this.registerError = '';
         this.dismissModal();
         this.router.navigate(['/home']).then(() => {
           window.location.reload();
         });
       },
       error: (error) => {
+        this.registerError = error.error?.message || 'Registration failed';
         console.error('Registration failed', error);
       },
     });
+  }
+
+  validateEmail(email: string): boolean {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 
   getHomePage() {

@@ -26,3 +26,11 @@ ion-modal {
     }
   }
 }
+
+ion-text.error-message {
+  display: block;
+  text-align: center;
+  margin: 16px 0;
+  font-weight: 500;
+  font-size: 1.1em;
+}
