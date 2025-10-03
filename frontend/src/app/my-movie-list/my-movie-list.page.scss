@@ -42,6 +42,13 @@ ion-modal {
   }
 }
 
+.add-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
 .suggestions-list {
   max-height: 200px;
   overflow-y: auto;

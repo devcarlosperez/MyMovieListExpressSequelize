@@ -4,17 +4,15 @@
     <ion-text color="medium">
       <h2 class="ion-text-center">Welcome to MyMovieList!</h2>
       <p class="ion-text-center">
-        To create and manage your movie list, you need to login.
+        To create and manage your movie list, you need to login or register if you dont have an account yet.
       </p>
     </ion-text>
   </div>
 
   <div *ngIf="isLoggedIn">
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button id="open-add-movie-modal" color="primary">
-        <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
+    <ion-button expand="block" id="open-add-movie-modal" class="add-movie">
+      Add Movie
+    </ion-button>
 
     <ion-list>
       <ion-card *ngFor="let b of movies">
