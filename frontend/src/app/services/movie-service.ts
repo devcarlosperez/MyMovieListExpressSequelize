@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
+
   endpoint = 'http://localhost:8080/api/movies';
 
   constructor(private httpClient: HttpClient) {}
@@ -15,7 +17,7 @@ export class MovieService {
     });
 
     const body = new URLSearchParams();
-    body.append("title", movie.name);
+    body.append("name", movie.name);
     body.append("rating", movie.rating);
     body.append("userId", localStorage.getItem('userId') || '')
 
@@ -49,5 +51,9 @@ export class MovieService {
     body.append('userId', localStorage.getItem('userId') || '');
 
     return this.httpClient.put(`${this.endpoint}/${movieId}`, body.toString(), { headers });
+  }
+
+  searchMovies(title: string): Observable<any> {
+    return this.httpClient.get(`http://www.omdbapi.com/?apikey=ce2589c3&s=${encodeURIComponent(title)}`);
   }
 }

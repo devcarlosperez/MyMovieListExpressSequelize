@@ -6,17 +6,20 @@ import { ModalController } from '@ionic/angular';
   selector: 'app-my-movie-list',
   templateUrl: './my-movie-list.page.html',
   styleUrls: ['./my-movie-list.page.scss'],
-  standalone: false
+  standalone: false,
 })
 export class MyMovieListPage implements OnInit {
   isLoggedIn: boolean = false;
   movies: any = [];
+  suggestions: any = [];
   addMovieTitle: string = '';
   addMovieRating: number = 0;
+  httpClient: any;
 
-  constructor(private movieService: MovieService,
+  constructor(
+    private movieService: MovieService,
     private modalController: ModalController
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.isLoggedIn = localStorage.getItem('userId') !== null;
@@ -33,7 +36,7 @@ export class MyMovieListPage implements OnInit {
       },
       error: (error) => {
         console.error('Error loading movies:', error);
-      }
+      },
     });
   }
 
@@ -41,7 +44,7 @@ export class MyMovieListPage implements OnInit {
     if (this.addMovieTitle && this.addMovieRating) {
       const movie = {
         name: this.addMovieTitle,
-        rating: this.addMovieRating
+        rating: this.addMovieRating,
       };
 
       this.movieService.create(movie).subscribe({
@@ -52,16 +55,42 @@ export class MyMovieListPage implements OnInit {
         },
         error: (error) => {
           console.error('Error adding movie:', error);
-        }
+        },
       });
     }
   }
 
   async dismissModal() {
-      const modal = await this.modalController.getTop();
-      if (modal) {
-        modal.dismiss();
-      }
+    const modal = await this.modalController.getTop();
+    if (modal) {
+      modal.dismiss();
+    }
   }
 
+  onTitleChange(event: any) {
+    const value = event.target.value;
+
+    if (value && value.length > 2) {
+      this.movieService.searchMovies(value).subscribe({
+        next: (response: any) => {
+          if (response.Response === 'True') {
+            this.suggestions = response.Search;
+          } else {
+            this.suggestions = [];
+          }
+        },
+        error: (err: any) => {
+          console.error('Error fetching suggestions', err);
+          this.suggestions = [];
+        },
+      });
+    } else {
+      this.suggestions = [];
+    }
+  }
+
+  selectSuggestion(movie: any) {
+    this.addMovieTitle = movie.Title;
+    this.suggestions = [];
+  }
 }

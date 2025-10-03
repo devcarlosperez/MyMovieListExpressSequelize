@@ -42,9 +42,20 @@
           <ion-label position="stacked">Title</ion-label>
           <ion-input
             [(ngModel)]="addMovieTitle"
+            (ionInput)="onTitleChange($event)"
             placeholder="Enter the title of the movie"
           ></ion-input>
         </ion-item>
+
+        <ion-list *ngIf="suggestions.length > 0" class="suggestions-list">
+          <ion-item
+            button
+            *ngFor="let s of suggestions"
+            (click)="selectSuggestion(s)"
+          >
+            {{ s.Title }} ({{ s.Year }})
+          </ion-item>
+        </ion-list>
 
         <ion-item>
           <ion-label position="stacked">Rating</ion-label>

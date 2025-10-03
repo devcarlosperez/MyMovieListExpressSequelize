@@ -41,3 +41,26 @@ ion-modal {
     color: var(--color-secondary);
   }
 }
+
+.suggestions-list {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 4px;
+  border: 1px solid var(--color-neutral-03);
+  border-radius: 4px;
+  background: var(--color-neutral-01);
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+}
+
+.suggestions-list ion-item {
+  font-size: 14px;
+  padding: 8px;
+  color: var(--color-neutral-05);
+}
+
+.suggestions-list ion-item {
+  --background: var(--color-neutral-02);
+  --color: var(--color-neutral-05);
+}
