@@ -1,3 +1,64 @@
 <ion-content>
-  
+  <!-- Mensaje cuando no está logueado -->
+  <div *ngIf="!isLoggedIn" class="message-container">
+    <ion-text color="medium">
+      <h2 class="ion-text-center">Welcome to MyMovieList!</h2>
+      <p class="ion-text-center">
+        To create and manage your movie list, you need to login.
+      </p>
+    </ion-text>
+  </div>
+
+  <div *ngIf="isLoggedIn">
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button id="open-add-movie-modal" color="primary">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    <ion-list>
+      <ion-card *ngFor="let b of movies">
+        <img [src]="b.poster" [alt]="b.name" />
+        <ion-card-header>
+          <ion-card-title>{{b.name}}</ion-card-title>
+          <ion-card-subtitle>Rating: {{b.rating}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <p>{{b.plot}}</p>
+          <ion-text color="medium">
+            <p>Director: {{b.director}}</p>
+            <p>Year: {{b.year}}</p>
+            <p>Genre: {{b.genre}}</p>
+          </ion-text>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+
+  <ion-modal trigger="open-add-movie-modal">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-label position="stacked">Title</ion-label>
+          <ion-input
+            [(ngModel)]="addMovieTitle"
+            placeholder="Enter the title of the movie"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Rating</ion-label>
+          <ion-input
+            [(ngModel)]="addMovieRating"
+            placeholder="Enter the rating"
+          ></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" (click)="addMovie()">Add</ion-button>
+        <ion-button expand="block" color="medium" (click)="dismissModal()"
+          >Cancel</ion-button
+        >
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

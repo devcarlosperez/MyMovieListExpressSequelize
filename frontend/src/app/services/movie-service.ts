@@ -17,16 +17,37 @@ export class MovieService {
     const body = new URLSearchParams();
     body.append("title", movie.title);
     body.append("rating", movie.rating);
-    body.append("userId", localStorage.getItem('userId'))
+    body.append("userId", localStorage.getItem('userId') || '')
 
     return this.httpClient.post(this.endpoint, body.toString(), { headers})
   }
 
   getAllMovies() {
-    return this.httpClient.get(this.endpoint)
+    const userId = localStorage.getItem('userId')
+    return this.httpClient.get(`${this.endpoint}?userId=${userId}`)
   }
 
   deleteMovies(movieId: number) {
-    return this.httpClient.delete(`${this.endpoint}/${movieId}`)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+
+    const body = new URLSearchParams();
+    body.append('userId', localStorage.getItem('userId') || '')
+
+    return this.httpClient.delete(`${this.endpoint}/${movieId}`, {headers, body: body.toString()});
+  }
+
+  updateMovie(movieId: number, movie: any) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+
+    const body = new URLSearchParams();
+    body.append('title', movie.title);
+    body.append('rating', movie.rating);
+    body.append('userId', localStorage.getItem('userId') || '');
+
+    return this.httpClient.put(`${this.endpoint}/${movieId}`, body.toString(), { headers });
   }
 }

@@ -10,7 +10,7 @@ import { UserService } from './services/user-service';
   standalone: false,
 })
 export class AppComponent {
-  isLoggedIn: boolean = false
+  isLoggedIn: boolean = false;
 
   loginEmail: string = '';
   loginPassword: string = '';
@@ -24,44 +24,58 @@ export class AppComponent {
     private userService: UserService
   ) {}
 
+  ngOnInit() {
+    this.isLoggedIn = localStorage.getItem('userId') !== null;
+  }
+
   login() {
     const user = {
       email: this.loginEmail,
-      password: this.loginPassword
+      password: this.loginPassword,
     };
 
     this.userService.getUser(user).subscribe({
       next: (response: any) => {
         console.log('Login successful', response);
         this.isLoggedIn = true;
+        localStorage.setItem('userId', response.id);
         this.dismissModal();
+        this.router.navigate(['/home']).then(() => {
+          window.location.reload();
+        });
       },
       error: (error) => {
         console.error('Login failed', error);
-      }
+      },
     });
   }
 
   logout() {
     this.isLoggedIn = false;
-    this.router.navigate(['/home']);
+    localStorage.removeItem('userId');
+    this.router.navigate(['/home']).then(() => {
+      window.location.reload();
+    });
   }
 
   register() {
     const user = {
       userName: this.registerName,
       email: this.registerEmail,
-      password: this.registerPassword
+      password: this.registerPassword,
     };
 
     this.userService.create(user).subscribe({
       next: (response: any) => {
         console.log('Registration successful', response);
         this.dismissModal();
+        this.router.navigate(['/home']).then(() => {
+          window.location.reload();
+        });
       },
       error: (error) => {
         console.error('Registration failed', error);
-      }
+      },
     });
   }
 
