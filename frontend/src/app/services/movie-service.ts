@@ -15,7 +15,7 @@ export class MovieService {
     });
 
     const body = new URLSearchParams();
-    body.append("title", movie.title);
+    body.append("title", movie.name);
     body.append("rating", movie.rating);
     body.append("userId", localStorage.getItem('userId') || '')
 
